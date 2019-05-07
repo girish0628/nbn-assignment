@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { fetchEarthQuakeData, zoomToFeature } from '../actions';
-import Map from '../containers/Map';
+import Map from './Map';
 
 
 class EarthQuakeList extends Component {
@@ -50,7 +50,7 @@ class EarthQuakeList extends Component {
   render() {
     
     return ( 
-          <div className="scroll-area">
+          <div className="scroll-area" data-test="scroll-area">
             {this.renderList()} 
             <Map />   
           </div>
