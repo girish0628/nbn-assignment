@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { fetchEarthQuakeData } from '../actions';
+import { fetchEarthQuakeData, zoomToFeature } from '../actions';
 import Map from '../containers/Map';
 
 
@@ -22,7 +22,8 @@ class EarthQuakeList extends Component {
     if(!features) return null;
 
     return features.map((feature, index)=>{
-      return <div className="list-group" style={{width:'30%'}} >
+      return <div className="list-group" style={{width:'30%'}} key={index}
+              onClick={()=>this.props.zoomToFeature(feature.geometry.coordinates)}>
                 <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
                 <div className="arrow">                    
                     <i className="fa fa-chevron-right" aria-hidden="true"></i>
@@ -63,4 +64,4 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps, {fetchEarthQuakeData})(EarthQuakeList);
+export default connect(mapStateToProps, {fetchEarthQuakeData, zoomToFeature})(EarthQuakeList);

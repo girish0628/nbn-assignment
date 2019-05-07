@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
     }
     componentWillReceiveProps(nextProps) {
       
-      if (nextProps!==null) {       
+      if (nextProps.earthquakes!==null) {       
       //Earthquake marker styling options
       let geojsonMarkerOptions = {
         radius: 8,
@@ -33,23 +33,20 @@ import { connect } from 'react-redux';
     this.map.fitBounds(geojsonLayer.getBounds());
 
       }     
-
+      if (nextProps.zoomToFeature.length!==0) {
+        let {zoomToFeature} = nextProps;       
+      //Zoom to feature on click of list
+      this.map.setView(new L.LatLng(zoomToFeature[1], zoomToFeature[0]), 12);     
+  
+        } 
   }
     mapInit = ()=>{
       const {earthquakes} = this.props;      
       if(!earthquakes) return null;
-
           // initialize the map
           this.map = L.map('map');
           //Load tile layer on map using map box maps
-          L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            maxZoom: 18,
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-              '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-              'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox.light'
-          }).addTo(this.map);
-       
+          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);       
     }
 
   render() {
@@ -64,7 +61,8 @@ import { connect } from 'react-redux';
 //Map store states to current component props
 const mapStateToProps = state =>{
   return {
-    earthquakes: state.earthquakes
+    earthquakes: state.earthquakes,
+    zoomToFeature: state.zoomToFeature
   }
 }
 

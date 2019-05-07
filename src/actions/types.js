@@ -1,1 +1,2 @@
 export const GET_EARTHQUAKEDATA = "GET_EARTHQUAKEDATA";
+export const CLICK_INFO = "CLICK_INFO";
