@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import {BASE_URL} from './config';
 export default axios.create({
-    baseURL: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/'
+    baseURL: BASE_URL
 });

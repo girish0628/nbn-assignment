@@ -1,30 +1,41 @@
-.app{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html,
+body {
+  height: 100%;
 }
-html, body{
-    height: 100%;
+small {
+  color: orange;
 }
-small{
-    color: orange;
+.arrow {
+  float: right;
+  padding: 0px 0 0 20px;
+  font-size: 32px;
 }
-.arrow{
-    float: right;
-    padding: 0px 0 0 20px;
-    font-size: 32px;
+#map {
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  width: 70%;
+  height: 95%;
 }
-#map{
-    position: absolute;
-    top: 5%;
-    left: 30%;
-    width: 70%;
-    height: 95%;
+.list-content {
+  padding-bottom: 10px;
 }
-.list-content{
-    padding-bottom: 10px
+.scroll-area {
+  height: 650px;
+  overflow-y: scroll;
 }
-.scroll-area{  
-    height:calc(100% - 800px);   
-    overflow-y:scroll;
-  }
+.app {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header {
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+.err-msg {
+  right: 20px;
+  z-index: 1000;
+  position: absolute;
+}
